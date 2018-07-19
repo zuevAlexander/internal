@@ -1,0 +1,13 @@
+security:
+#    encoders:
+#        CoreBundle\Entity\User:
+#            algorithm: bcrypt
+#            cost: 12
+
+    providers:
+        in_memory:
+            memory: ~
+
+    firewalls:
+        main:
+            anonymous: ~
