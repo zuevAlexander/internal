@@ -4,3 +4,9 @@ api_user:
   prefix: /api
   defaults:
     _format: json
+api_check_phone:
+  resource: '@ApiBundle/Controller/CheckPhoneController.php'
+  type: rest
+  prefix: /api
+  defaults:
+    _format: json

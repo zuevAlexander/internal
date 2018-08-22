@@ -17,4 +17,6 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
-
+    twilio_send_code_url: 'https://api.authy.com/protected/json/phones/verification/start'
+    twilio_check_code_url: 'https://api.authy.com/protected/json/phones/verification/check'
+    twilio_token: your_auth_token

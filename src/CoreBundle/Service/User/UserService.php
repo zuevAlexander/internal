@@ -11,7 +11,7 @@ use CoreBundle\Exception\User\ForbiddenException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
- * Class TestService
+ * Class UserService
  */
 class UserService
 {
@@ -23,7 +23,7 @@ class UserService
     /**
     * @var ContainerInterface
     */
-    protected $container;
+    private $container;
 
     /**
      * UserService constructor.

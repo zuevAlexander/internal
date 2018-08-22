@@ -1,0 +1,16 @@
+parameters:
+  core.handler.check_phone.class: CoreBundle\Handler\CheckPhoneHandler
+  core.service.check_phone.class: CoreBundle\Service\CheckPhone\CheckPhoneService
+services:
+  core.handler.check_phone:
+    class: '%core.handler.check_phone.class%'
+    arguments:
+      - '@core.service.check_phone'
+  core.service.check_phone:
+    class: '%core.service.check_phone.class%'
+    arguments:
+      - '%twilio_send_code_url%'
+      - '%twilio_check_code_url%'
+      - '%twilio_token%'
+      - '%secret%'
+      - '@request_stack'
