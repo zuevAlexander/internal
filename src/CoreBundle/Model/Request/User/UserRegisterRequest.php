@@ -11,48 +11,21 @@ class UserRegisterRequest
 {
     /**
      * @var string
-     *
-     * @Assert\Length(
-     *     min="2",
-     *     max="255"
-     * )
-     * @Assert\NotBlank()
      */
     private $username;
 
     /**
      * @var string
-     *
-     * @Assert\Length(
-     *     min="4",
-     *     max="255"
-     * )
-     *
-     * @Assert\NotBlank()
      */
     private $password;
 
     /**
      * @var string
-     *
-     * @Assert\Email(
-     *     message = "The email '{{ value }}' is not a valid email.",
-     *     checkMX = true
-     * )
-     *
-     * @Assert\NotBlank()
      */
     private $email;
 
     /**
      * @var int
-     *
-     * @Assert\Length(
-     *     min="5",
-     *     max="10"
-     * )
-     *
-     * @Assert\NotBlank()
      */
     private $phone;
 
