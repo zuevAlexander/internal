@@ -10,7 +10,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     authenticate_token_name: PUSHUP-CHALLENGE-ADMIN-TOKEN-SALT
-    locale: ru
+    locale: en
 
 framework:
     #esi:             ~
