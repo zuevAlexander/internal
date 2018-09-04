@@ -2,21 +2,20 @@
 
 namespace CoreBundle\Form\User;
 
-use CoreBundle\Model\Request\User\UserRegisterRequest;
+use CoreBundle\Model\Request\User\UserUpdatePatchRequest;
 use RestBundle\Form\AbstractFormType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
- * Class UserRegisterType
+ * Class UserUpdatePatchType
  * @package CoreBundle\Form\User
  */
-class UserRegisterType extends AbstractFormType
+class UserUpdatePatchType extends AbstractFormType
 {
-    const DATA_CLASS = UserRegisterRequest::class;
+    const DATA_CLASS = UserUpdatePatchRequest::class;
 
     /**
      * @param FormBuilderInterface $builder
@@ -26,15 +25,26 @@ class UserRegisterType extends AbstractFormType
     {
         $builder
             ->add('username', TextType::class, [
-                'required' => true,
+                'required' => false,
             ])
             ->add('email', EmailType::class, [
-                'required' => true,
+                'required' => false,
             ])
             ->add('phone', IntegerType::class, array(
                 'required' => false,
             ))
-            ->add('password', PasswordType::class, array(
+            ->add('gender', TextType::class, array(
+                'required' => false,
+            ))
+            ->add('age', IntegerType::class, array(
+                'required' => false,
+            ))
+            ->add('country', TextType::class, array(
+                'required' => false,
+            ))
+            ->add('zipcode', TextType::class, array(
+                'required' => false,
+            ))->add('profile', TextType::class, array(
                 'required' => false,
             ));
     }

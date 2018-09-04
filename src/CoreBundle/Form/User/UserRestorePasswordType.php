@@ -2,18 +2,18 @@
 
 namespace CoreBundle\Form\User;
 
-use CoreBundle\Model\Request\User\UserReadRequest;
+use CoreBundle\Model\Request\User\UserRestorePasswordRequest;
 use RestBundle\Form\AbstractFormType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * Class UserReadType
+ * Class UserRestorePasswordType
  * @package CoreBundle\Form\User
  */
-class UserReadType extends AbstractFormType
+class UserRestorePasswordType extends AbstractFormType
 {
-    const DATA_CLASS = UserReadRequest::class;
+    const DATA_CLASS = UserRestorePasswordRequest::class;
 
     /**
      * @param FormBuilderInterface $builder
@@ -21,9 +21,8 @@ class UserReadType extends AbstractFormType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('user', IntegerType::class, [
-                'required' => true,
-            ]);
+        $builder->add('email', TextType::class, [
+            'required' => true,
+        ]);
     }
 }

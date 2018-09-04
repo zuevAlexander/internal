@@ -7,14 +7,14 @@ trait UserSingleRequestTrait
     /**
      * @var int
      */
-    private $user = 0;
+    private $user;
 
     /**
      * @return int
      */
     public function getUser(): int
     {
-        return $this->user;
+        return (int)$this->user;
     }
 
     /**

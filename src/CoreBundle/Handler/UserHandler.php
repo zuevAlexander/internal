@@ -2,17 +2,19 @@
 
 namespace CoreBundle\Handler;
 
-use CoreBundle\Entity\User;
+use CoreBundle\Entity\ResponseUser;
+use CoreBundle\Model\Request\User\UserListRequest;
 use CoreBundle\Model\Request\User\UserLoginRequest;
 use CoreBundle\Model\Request\User\UserRegisterRequest;
-use CoreBundle\Model\Request\User\UserReadRequest;
-use CoreBundle\Model\Handler\UserProcessorInterface;
+use CoreBundle\Model\Request\User\UserRestorePasswordRequest;
+use CoreBundle\Model\Request\User\UserUpdatePatchRequest;
 use CoreBundle\Service\User\UserService;
+use RestBundle\Handler\ProcessorInterface;
 
 /**
  * Class UserHandler
  */
-class UserHandler implements UserProcessorInterface
+class UserHandler implements ProcessorInterface
 {
     /**
      * @var UserService
@@ -29,30 +31,46 @@ class UserHandler implements UserProcessorInterface
 
     /**
      * @param UserLoginRequest $request
-     *
-     * @return User
+     * @return ResponseUser
      */
-    public function processPostLogin(UserLoginRequest $request) : User
+    public function processPostLogin(UserLoginRequest $request): ResponseUser
     {
         return $this->userService->loginUser($request);
     }
 
     /**
      * @param UserRegisterRequest $request
-     *
-     * @return User
+     * @return ResponseUser
      */
-    public function processPostRegister(UserRegisterRequest $request) : User
+    public function processPostRegister(UserRegisterRequest $request): ResponseUser
     {
         return $this->userService->createUser($request);
     }
 
     /**
-     * @param UserReadRequest $request
+     * @param UserListRequest $request
      * @return array
      */
-    public function processGet(UserReadRequest $request): array
+    public function processGetC(UserListRequest $request)
     {
-        return $this->userService->getSomeThing();
+        return $this->userService->getUsers($request);
+    }
+
+    /**
+     * @param UserRestorePasswordRequest $request
+     * @return ResponseUser
+     */
+    public function processPostRestorePassword(UserRestorePasswordRequest $request): ResponseUser
+    {
+        return $this->userService->restorePassword($request);
+    }
+
+    /**
+     * @param UserUpdatePatchRequest $request
+     * @return ResponseUser
+     */
+    public function processPatch(UserUpdatePatchRequest $request): ResponseUser
+    {
+        return $this->userService->updateUser($request);
     }
 }

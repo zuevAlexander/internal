@@ -5,7 +5,8 @@ namespace ApiBundle\Controller;
 use CoreBundle\Form\User\UserListType;
 use CoreBundle\Form\User\UserLoginType;
 use CoreBundle\Form\User\UserRegisterType;
-use CoreBundle\Form\User\UserReadType;
+use CoreBundle\Form\User\UserRestorePasswordType;
+use CoreBundle\Form\User\UserUpdatePatchType;
 use RestBundle\Controller\BaseController;
 use RestBundle\Handler\ProcessorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -75,46 +76,20 @@ class UserController extends BaseController
     {
         return $this->process($request, UserRegisterType::class, Response::HTTP_CREATED);
     }
-//
-//    /**
-//     * @ApiDoc(
-//     *  resource=true,
-//     *  section="User",
-//     *  description="Create new user",
-//     *  input={
-//     *       "class" = "CoreBundle\Form\User\UserRegisterType",
-//     *       "name" = ""
-//     *  },
-//     *  statusCodes={
-//     *      200 = "Ok",
-//     *      204 = "Entity not found",
-//     *      400 = "Bad format",
-//     *      403 = "Forbidden"
-//     *  }
-//     *)
-//     *
-//     * @param Request $request
-//     *
-//     * @return Response
-//     */
-//    public function postAction(Request $request) : Response
-//    {
-//        return $this->process($request, UserRegisterType::class, Response::HTTP_CREATED);
-//    }
+
 
     /**
      * @ApiDoc(
      *  resource=true,
      *  section="User",
-     *  description="Get user",
+     *  description="Update profile",
      *  input={
-     *       "class" = "CoreBundle\Form\User\UserReadType",
+     *       "class" = "CoreBundle\Form\User\UserUpdatePatchType",
      *       "name" = ""
      *  },
      *  statusCodes={
      *      200 = "Ok",
-     *      400 = "Bad format",
-     *      403 = "Access denied"
+     *      400 = "Bad format"
      *  }
      *)
      *
@@ -124,37 +99,63 @@ class UserController extends BaseController
      *
      * @throws \Exception
      */
-    public function getAction(Request $request) : Response
+    public function patchAction(Request $request) : Response
     {
-        return $this->process($request, UserReadType::class);
+        return $this->process($request, UserUpdatePatchType::class, Response::HTTP_CREATED);
     }
 
-//    /**
-//     * @ApiDoc(
-//     *  resource=true,
-//     *  section="User",
-//     *  description="Get a list of Users",
-//     *  input={
-//     *       "class" = "CoreBundle\Form\User\UserListType",
-//     *       "name" = ""
-//     *  },
-//     *  statusCodes={
-//     *      200 = "Ok",
-//     *      204 = "Entity not found",
-//     *      400 = "Bad format",
-//     *      403 = "Forbidden"
-//     *  }
-//     * )
-//     *
-//     * @param Request $request
-//     *
-//     * @return Response
-//     */
-//    public function cgetAction(Request $request) : Response
-//    {
-//        return $this->process($request, UserListType::class);
-//    }
+    /**
+     * @ApiDoc(
+     *  resource=true,
+     *  section="User",
+     *  description="Get a list of Users",
+     *  input={
+     *       "class" = "CoreBundle\Form\User\UserListType",
+     *       "name" = ""
+     *  },
+     *  statusCodes={
+     *      200 = "Ok",
+     *      204 = "Entity not found",
+     *      400 = "Bad format",
+     *      403 = "Forbidden"
+     *  }
+     * )
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function cgetAction(Request $request) : Response
+    {
+        return $this->process($request, UserListType::class);
+    }
 
+    /**
+     * @ApiDoc(
+     *  resource=true,
+     *  section="User",
+     *  description="Restore password",
+     *  input={
+     *       "class" = "CoreBundle\Form\User\UserRestorePasswordType",
+     *       "name" = ""
+     *  },
+     *  statusCodes={
+     *      200 = "Ok",
+     *      400 = "Bad format"
+     *  }
+     *)
+     * @Annotations\Post("/restore-password")
+     *
+     * @param Request $request
+     *
+     * @return Response
+     *
+     * @throws \Exception
+     */
+    public function postRestorePasswordAction(Request $request) : Response
+    {
+        return $this->process($request, UserRestorePasswordType::class, Response::HTTP_CREATED);
+    }
 
     /**
      * @return ProcessorInterface

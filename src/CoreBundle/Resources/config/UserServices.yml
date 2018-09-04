@@ -12,3 +12,6 @@ services:
     arguments:
       - '@service_container'
       - "@security.password_encoder"
+      - '@templating'
+      - '@mailer'
+      - '%sender_email%'

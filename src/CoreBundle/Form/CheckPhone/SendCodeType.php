@@ -7,6 +7,10 @@ use RestBundle\Form\AbstractFormType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 
+/**
+ * Class SendCodeType
+ * @package CoreBundle\Form\CheckPhone
+ */
 class SendCodeType extends AbstractFormType
 {
     const DATA_CLASS = SendCodeRequest::class;

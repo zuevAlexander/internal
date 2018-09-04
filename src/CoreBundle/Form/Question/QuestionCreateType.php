@@ -1,19 +1,19 @@
 <?php
 
-namespace CoreBundle\Form\User;
+namespace CoreBundle\Form\Question;
 
-use CoreBundle\Model\Request\User\UserReadRequest;
+use CoreBundle\Model\Request\Question\QuestionCreateRequest;
 use RestBundle\Form\AbstractFormType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
- * Class UserReadType
- * @package CoreBundle\Form\User
+ * Class QuestionCreateType
+ * @package CoreBundle\Form\Question
  */
-class UserReadType extends AbstractFormType
+class QuestionCreateType extends AbstractFormType
 {
-    const DATA_CLASS = UserReadRequest::class;
+    const DATA_CLASS = QuestionCreateRequest::class;
 
     /**
      * @param FormBuilderInterface $builder
@@ -22,7 +22,7 @@ class UserReadType extends AbstractFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('user', IntegerType::class, [
+            ->add('text', TextType::class, [
                 'required' => true,
             ]);
     }

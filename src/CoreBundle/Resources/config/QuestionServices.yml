@@ -1,0 +1,13 @@
+parameters:
+  core.handler.question.class: CoreBundle\Handler\QuestionHandler
+  core.entity.question.class: CoreBundle\Entity\Question
+  core.service.question.class: CoreBundle\Service\Question\QuestionService
+services:
+  core.handler.question:
+    class: '%core.handler.question.class%'
+    arguments:
+      - '@core.service.question'
+  core.service.question:
+    class: '%core.service.question.class%'
+    arguments:
+      - '@service_container'
